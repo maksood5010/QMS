@@ -15,9 +15,14 @@ class TTS(
 	private val activity: Activity,
 ) : TextToSpeech.OnInitListener {
 
-	private val tts: TextToSpeech = TextToSpeech(activity, this)
-	private val ttsEn: TextToSpeech = TextToSpeech(activity, this)
+	private lateinit var tts: TextToSpeech
+	private lateinit var ttsEn: TextToSpeech
 
+	fun setup(){
+		tts = TextToSpeech(activity, this)
+		ttsEn = TextToSpeech(activity, this)
+
+	}
 	override fun onInit(i: Int) {
 
 		if (i == TextToSpeech.SUCCESS) {
