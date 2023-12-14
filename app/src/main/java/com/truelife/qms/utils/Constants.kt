@@ -11,12 +11,11 @@ object Constants {
 	const val queue = "QMS/queue/$REFERENCE"
 
 	val serverURI = "tcp://tvi.dyndns.biz:5483"
+
 	const val username = "nurse"
 	const val pwd ="nurse@112"
 
 	const val get_media = "QMS/get_media/"
 	const val mediaQueue = "QMS/media/$REFERENCE"
-
-
 
 }

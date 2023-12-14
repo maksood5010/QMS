@@ -15,5 +15,6 @@ data class QueueItem(
 
 
 data class QueueLine(
-	val QueueLine: List<QueueItem>
+	val QueueLine: List<QueueItem>,
+	val announce: String= "false",
 )

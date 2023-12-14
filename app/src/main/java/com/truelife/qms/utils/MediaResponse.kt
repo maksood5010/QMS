@@ -10,4 +10,8 @@ data class MediaResponse(
 data class File(
 	val media_type: String,
 	val url: String
-)
+){
+	/**
+	 * video / image
+	 * */
+}

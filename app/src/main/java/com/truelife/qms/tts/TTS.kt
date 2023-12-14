@@ -21,8 +21,14 @@ class TTS(
 	fun setup(){
 		tts = TextToSpeech(activity, this)
 		ttsEn = TextToSpeech(activity, this)
-
 	}
+	fun onDestroy() {
+		tts.stop()
+		ttsEn.stop()
+		tts.shutdown()
+		ttsEn.shutdown()
+	}
+
 	override fun onInit(i: Int) {
 
 		if (i == TextToSpeech.SUCCESS) {
@@ -41,7 +47,7 @@ class TTS(
 			}
 
 		} else {
-			Toast.makeText(activity, "Initilization Failed!", Toast.LENGTH_SHORT).show()
+			Toast.makeText(activity, "Initialization Failed!", Toast.LENGTH_SHORT).show()
 
 		}
 	}
@@ -49,15 +55,16 @@ class TTS(
 
 
 	fun speakOut(token: QueueItem) {
-		ttsEn.speak("Token Number ${token.token} Room Number ${token.room_number} Doctor Name ${token.en_name}", TextToSpeech.QUEUE_ADD, null, null)
+		ttsEn.speak("Token Number ${token.token} Please Proceed to Counter Number ${token.room_number}", TextToSpeech.QUEUE_ADD, null, null)
 	}
 	fun speakOutArabic(token: QueueItem) {
-//		tts.setSpeechRate(0.9f)
+		/*tts.setSpeechRate(0.9f)*/
 		Log.d("TAG", "speakOutArabic: called now")
+
 		val a = " رقم التذكرة" + token.token
-		val b = "رقم الغرفة" + token.room_number
-		val c = " اسم الطبيب" + token.ar_name
-		tts.speak("$a$b$c", TextToSpeech.QUEUE_ADD, null, null)
+		val b = "الرجاء التوجه إلى الكاونتر رقم" + token.room_number
+
+		tts.speak("$a$b", TextToSpeech.QUEUE_ADD, null, null)
 		speakOut(token)
 	}
 }
